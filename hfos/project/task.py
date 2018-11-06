@@ -39,9 +39,9 @@ Provisions
 
 """
 
-from hfos.schemata.defaultform import editbuttons, section, lookup_field
-from hfos.schemata.tag import TagData, TagForm
-from hfos.schemata.base import base_object, uuid_object
+from isomer.schemata.defaultform import editbuttons, section, lookup_field
+from isomer.schemata.tag import TagData, TagForm
+from isomer.schemata.base import base_object, uuid_object
 
 TaskSchema = base_object('task', all_roles='crew')
 

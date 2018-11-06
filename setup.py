@@ -41,16 +41,16 @@ This software package is a plugin module for HFOS.
 """,
       dependency_links=[],
       install_requires=['hfos>=1.2.0'],
-      entry_points="""[hfos.schemata]
+      entry_points="""[isomer.schemata]
       project=hfos.project.project:Project
       task=hfos.project.task:Task
       taskgroup=hfos.project.taskgroup:TaskGroup
       taskgridconfig=hfos.project.taskgridconfig:TaskGridConfig
-      [hfos.components]
+      [isomer.components]
       projectservice=hfos.project.projectservice:ProjectService
-      [hfos.management]
+      [isomer.management]
       import-gh=hfos.project.importer.github:GithubImporter
-      [hfos.provisions]
+      [isomer.provisions]
       taskgroup=hfos.project.provisions.taskgroup:provision
       taskgrid=hfos.project.provisions.taskgrid:provision
     """,

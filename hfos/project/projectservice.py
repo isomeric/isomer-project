@@ -22,10 +22,10 @@ import dateutil.parser
 from circuits.core.events import Event
 from circuits.core.handlers import handler
 from circuits.core.timers import Timer
-from hfos.mail import send_mail
+from isomer.mail import send_mail
 
-from hfos.database import objectmodels
-from hfos.misc import std_now
+from isomer.database import objectmodels
+from isomer.misc import std_now
 
 __author__ = "Heiko 'riot' Weinen"
 __license__ = "AGPLv3"
@@ -40,7 +40,7 @@ Doing rather not much except serve as module component entrypoint.
 
 """
 
-from hfos.component import ConfigurableComponent
+from isomer.component import ConfigurableComponent
 
 
 class check_alerts(Event):

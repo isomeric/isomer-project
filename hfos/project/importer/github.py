@@ -7,13 +7,13 @@ Forked from: unbracketed/export_repo_issues_to_csv.py
 import click
 import requests
 
-from hfos.logger import hfoslog, debug, error
-from hfos.misc import std_uuid
+from isomer.logger import isolog, debug, error
+from isomer.misc import std_uuid
 
 
 def log(*args, **kwargs):
     kwargs.update({'emitter': 'GHIMPORT', 'frame_ref': 2})
-    hfoslog(*args, **kwargs)
+    isolog(*args, **kwargs)
 
 
 @click.command()

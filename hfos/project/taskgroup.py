@@ -39,9 +39,9 @@ Provisions
 
 """
 
-from hfos.schemata.extends import DefaultExtension
-from hfos.schemata.defaultform import lookup_field, editbuttons
-from hfos.schemata.base import uuid_object, base_object
+from isomer.schemata.extends import DefaultExtension
+from isomer.schemata.defaultform import lookup_field, editbuttons
+from isomer.schemata.base import uuid_object, base_object
 
 TaskGroupSchema = base_object('taskgroup', all_roles='crew')
 
