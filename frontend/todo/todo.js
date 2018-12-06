@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name hfosFrontendApp.controller:TODOCtrl
+ * @name isomerFrontendApp.controller:TODOCtrl
  * @description
  * # TODOCtrl
- * Controller of the hfosFrontendApp
+ * Controller of the isomerFrontendApp
  */
 
 class TODOcomponent {

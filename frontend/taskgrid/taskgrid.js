@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name hfosFrontendApp.controller:TaskGridCtrl
+ * @name isomerFrontendApp.controller:TaskGridCtrl
  * @description
  * # TaskGridCtrl
- * Controller of the hfosFrontendApp
+ * Controller of the isomerFrontendApp
  */
 
 import deletionWarning from './modals/deletionWarning.tpl.html'

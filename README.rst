@@ -1,9 +1,9 @@
-HFOS - The Project Module
-=========================
+Isomer - The Project Module
+===========================
 
 A modern, opensource approach to collaborative project planning.
 
-This software package is an add-on module for `HFOS <https://github.com/hackerfleet/hfos>`__.
+This software package is an add-on module for `Isomer <https://github.com/isomeric/isomer>`__.
 
 Work in progress
 ----------------
@@ -17,26 +17,21 @@ Bugs & Discussion
 =================
 
 Please research any bugs you find via our `Github issue tracker for
-HFOS <https://github.com/hackerfleet/hfos/issues>`__ and report them,
+Isomer <https://github.com/isomeric/isomer-project/issues>`__ and report them,
 if they're still unknown.
 
 You can also find us here:
 
 * `irc #hackerfleet on freenode <http://webchat.freenode.net/?randomnick=1&channels=hackerfleet&uio=d4>`__
-* `github.com/Hackerfleet <https://github.com/Hackerfleet>`__
-* `Waffle.io <https://waffle.io/hackerfleet/hfos>`__
-* `reddit <https://reddit.com/r/hackerfleet>`__
-* `Twitter <https://twitter.com/hackerfleet>`__
-* `Facebook <https://www.facebook.com/Hackerfleet>`__
-* `soup.io <http://hackerfleet.soup.io/>`__
-* `G+ <https://plus.google.com/105528689027070271173>`__
+* `github.com/isomeric <https://github.com/isomeric>`__
+* `Waffle.io <https://waffle.io/isomeric/isomer>`__
 
 Installation
 ============
 
-Install HFOS first, then install this module, its provisions and finally
+Install Isomer first, then install this module, its provisions and finally
 rebuild your frontend.
-Restarting the HFOS backend should give now you access to the project
+Restarting the Isomer backend should give now you access to the project
 management components.
 
 Contributors

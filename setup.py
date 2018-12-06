@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-# HFOS - Hackerfleet Operating System
-# ===================================
+# Isomer - The distributed application framework
+# ==============================================
 # Copyright (C) 2011-2018 Heiko 'riot' Weinen <riot@c-base.org> and others.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -23,36 +23,35 @@ __license__ = "AGPLv3"
 
 from setuptools import setup, find_packages
 
-setup(name="hfos-project",
+setup(name="isomer-project",
       version="0.0.1",
-      description="hfos-project",
-
-      author="Hackerfleet Community",
+      description="isomer-project",
+      author="Isomer Community",
       author_email="riot@c-base.org",
-      url="https://github.com/hackerfleet/hfos-project",
+      url="https://github.com/isomeric/isomer-project",
       license="GNU Affero General Public License v3",
       packages=find_packages(),
-      long_description="""HFOS - Project
-==============
+      long_description="""Isomer - Project
+================
 
 A modern, opensource approach to project management.
 
-This software package is a plugin module for HFOS.
+This software package is a plugin module for Isomer.
 """,
       dependency_links=[],
-      install_requires=['hfos>=1.2.0'],
+      install_requires=['isomer>=1.2.0'],
       entry_points="""[isomer.schemata]
-      project=hfos.project.project:Project
-      task=hfos.project.task:Task
-      taskgroup=hfos.project.taskgroup:TaskGroup
-      taskgridconfig=hfos.project.taskgridconfig:TaskGridConfig
+      project=isomer.project.project:Project
+      task=isomer.project.task:Task
+      taskgroup=isomer.project.taskgroup:TaskGroup
+      taskgridconfig=isomer.project.taskgridconfig:TaskGridConfig
       [isomer.components]
-      projectservice=hfos.project.projectservice:ProjectService
+      projectservice=isomer.project.projectservice:ProjectService
       [isomer.management]
-      import-gh=hfos.project.importer.github:GithubImporter
+      import-gh=isomer.project.importer.github:GithubImporter
       [isomer.provisions]
-      taskgroup=hfos.project.provisions.taskgroup:provision
-      taskgrid=hfos.project.provisions.taskgrid:provision
+      taskgroup=isomer.project.provisions.taskgroup:provision
+      taskgrid=isomer.project.provisions.taskgrid:provision
     """,
       test_suite="tests.main.main",
       )
