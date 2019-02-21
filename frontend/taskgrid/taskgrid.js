@@ -39,15 +39,18 @@ class taskgridcomponent {
         this.taskgrids = [];
         this.projects = {};
         this.tags = {};
+        this.assignees = {};
 
-        this.filter_tag = "";
-        this.filter_project = "";
+        this.filter_tag = null;
+        this.filter_project = null;
+        this.filter_assignee = null;
 
         this.selected_task = null;
 
         this.show_filters = false;
         this.show_filters_tag = false;
         this.show_filters_project = false;
+        this.show_filters_assignee = false;
 
         this.selected = [];
         this.selected_groups = [];
@@ -56,6 +59,7 @@ class taskgridcomponent {
         this.me_tag = null;
         this.me_project = null;
         this.me_priority = null;
+        this.me_assignee = null;
 
         this.search_string = '';
 
@@ -329,6 +333,7 @@ class taskgridcomponent {
 
             self.op.search('task', {taskgroup: {'$in': taskgroups}}, '*').then(function (msg) {
                 let tasks = msg.data.list;
+                let new_assignees = [];
 
                 for (let task of tasks) {
                     let visualTask = task;
@@ -339,14 +344,31 @@ class taskgridcomponent {
                     self.tasksByGroup[task.taskgroup].push(visualTask);
                     self.tasklist[task.uuid] = task;
                 }
+
             });
 
+            self.op.search('user', '', '*').then(function(msg) {
+                console.log('[TASKGRID] Users:', msg);
+                for (let user of msg.data.list) {
+                    self.assignees[user.uuid] = user;
+                }
+            })
         });
     }
 
     new_task(group_uuid) {
         console.log('[TASKGRID] Adding new task to group:', group_uuid);
-        this.state.go('app.editor', {schema: 'task', action: 'create', initial: {taskgroup: group_uuid}})
+        let initial_object = {
+            taskgroup: group_uuid
+        };
+
+        if (this.filter_project !== null) {
+            initial_object.project = this.filter_project;
+        }
+        if (this.filter_assignee !== null) {
+            initial_object.assignee = this.filter_assignee;
+        }
+        this.state.go('app.editor', {schema: 'task', uuid: '', action: 'create', initial: initial_object})
     }
 
     select_all() {
@@ -453,6 +475,28 @@ class taskgridcomponent {
         }
     }
 
+    assign_assignee() {
+        if (typeof this.me_assignee === 'undefined' || this.me_assignee === null || this.me_assignee === '') {
+            this.notification.add('warning', 'Select an assignee first', 'You have to select an assignee to assign to', 3);
+            return
+        }
+
+        for (let uuid of this.selected) {
+            let task = this.tasklist[uuid];
+
+            task.assignee = this.me_assignee;
+            this.op.changeObject('task', uuid, {field: 'assignee', value: this.me_assignee});
+        }
+    }
+
+    remove_assignee() {
+        for (let uuid of this.selected) {
+            let task = this.tasklist[uuid];
+            task.assignee = '';
+            this.op.changeObject('task', uuid, {field: 'assignee', value: ''});
+        }
+    }
+    
     set_priority() {
         for (let uuid of this.selected) {
             let task = this.tasklist[uuid];

@@ -43,7 +43,7 @@
                             </li>
                             <li class="inline-block">
                                 <a role="button" class="btn"
-                                   ng-class="{'active': $ctrl.show_filters_tag || $ctrl.show_filters_project}"
+                                   ng-class="{'active': $ctrl.show_filters_tag || $ctrl.show_filters_project || $ctrl.show_filters_assignee}"
                                    ng-click="$ctrl.show_filters = !$ctrl.show_filters">
                                     <i class="fa fa-filter"></i>Filter</a>
                             </li>
@@ -115,13 +115,14 @@
                 <div class="row">
 
                     <div class="form-inline">
+                        <span>Select</span>
                         <a role="button" class="btn btn-default"
                            ng-click="$ctrl.select_all()">
-                            <i class="fa fa-asterisk"></i> All
+                            <i class="fa fa-asterisk"></i>
                         </a>
                         <a role="button" class="btn btn-default"
                            ng-click="$ctrl.selected = []">
-                            <i class="fa fa-times"></i> Clear
+                            <i class="fa fa-times"></i>
                         </a>
 
                         <div class="vertical-divider"></div>
@@ -138,19 +139,19 @@
 
                         <a role="button" class="btn btn-danger"
                            ng-click="$ctrl.delete_selected()">
-                            <i class="fa fa-times"></i> Delete
+                            <i class="fa fa-times"></i>
                         </a>
 
                         <div class="vertical-divider"></div>
                         <span>Tag</span>
 
-                        <a role="button" class="btn btn-success"
-                           ng-click="$ctrl.add_tags()">
-                            <i class="fa fa-tag"></i> Add:
-                        </a>
                         <a role="button" class="btn btn-warning"
                            ng-click="$ctrl.remove_tags()">
-                            <i class="fa fa-times"></i> Remove:
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <a role="button" class="btn btn-success"
+                           ng-click="$ctrl.add_tags()">
+                            <i class="fa fa-tag"></i>
                         </a>
                         <select class="form-control" ng-model="$ctrl.me_tag"
                                 ng-style="{color: $ctrl.tags[$ctrl.me_tag].color}">
@@ -167,16 +168,34 @@
 
                         <a role="button" class="btn btn-warning"
                            ng-click="$ctrl.remove_project()">
-                            <i class="fa fa-object-ungroup"></i> Remove
+                            <i class="fa fa-object-ungroup"></i>
                         </a>
                         <a role="button" class="btn btn-success"
                            ng-click="$ctrl.assign_project()">
-                            <i class="fa fa-object-group"></i> Assign:
+                            <i class="fa fa-object-group"></i>
                         </a>
                         <select class="form-control" ng-model="$ctrl.me_project">
                             <option ng-repeat="(uuid, project) in $ctrl.projects"
                                     value="{{uuid}}">
                                 {{project.name}}
+                            </option>
+                        </select>
+
+                        <div class="vertical-divider"></div>
+                        <span>Assignee</span>
+
+                        <a role="button" class="btn btn-warning"
+                           ng-click="$ctrl.remove_assignee()">
+                            <i class="fa fa-user-times"></i>
+                        </a>
+                        <a role="button" class="btn btn-success"
+                           ng-click="$ctrl.assign_assignee()">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <select class="form-control" ng-model="$ctrl.me_assignee">
+                            <option ng-repeat="(uuid, assignee) in $ctrl.assignees"
+                                    value="{{uuid}}">
+                                {{assignee.name}}
                             </option>
                         </select>
 
@@ -231,6 +250,19 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label>
+                                    <input class="form-control" type="checkbox" ng-model="$ctrl.show_filters_assignee">
+                                    By assignee
+                                </label>
+                                <select class="form-control" ng-show="$ctrl.show_filters_assignee"
+                                        ng-model="$ctrl.filter_assignee" ng-change="$ctrl.change_assignee()">
+                                    <option value=""></option>
+                                    <option ng-repeat="(uuid, assignee) in $ctrl.assignees" value="{{uuid}}">
+                                        {{assignee.name}}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -264,13 +296,6 @@
                                         <span class="fa fa-asterisk"></span>
                                     </a>
                                 </h3>
-
-                                <div class="hidden box-header-btns pull-right">
-                                    <a title="settings" ng-click="$ctrl.openSettings(item)"><i
-                                        class="glyphicon glyphicon-cog"></i></a>
-                                    <a title="Remove widget" ng-click="$ctrl.remove(item)"><i
-                                        class="glyphicon glyphicon-trash"></i></a>
-                                </div>
                             </div>
                             <ul class="taskGridlist">
                                 <li class="taskBoxHeader"
@@ -280,7 +305,8 @@
                                          && ($ctrl.show_filters_project ? ($ctrl.filter_project === task.project
                                          || ($ctrl.filter_project === '' && (task.project == null || task.project === ''))) : true)
                                          && (($ctrl.show_filters_tag ? task.tags.indexOf($ctrl.filter_tag) > -1 : true)
-                                         || ($ctrl.show_filters_tag && $ctrl.filter_tag === '' && task.tags.length === 0))"
+                                         || ($ctrl.show_filters_tag && $ctrl.filter_tag === '' && task.tags.length === 0))
+                                         && ($ctrl.show_filters_assignee ? ($ctrl.filter_assignee === task.assignee) : true)"
                                     ng-repeat="task in $ctrl.tasksByGroup[item.taskgroup] | orderBy:'priority'">
 
                             <span class="taskBoxHeaderOverlay"
