@@ -22,7 +22,7 @@
  * """
  */
 
-@import '../../../scss/colors';
+@import '~scss/colors';
 
 #project_selector {
   @media (min-width: 768px) {
@@ -111,15 +111,6 @@
   border-radius: 5px;
 }
 
-.taskBox {
-  position: relative;
-  text-align: left;
-  background-color: rgba(255, 255, 255, 0.4);
-  margin: 5px;
-  border-radius: 5px;
-  z-index: 55;
-}
-
 .todoHeader {
   padding-left: 50px;
 }
@@ -166,16 +157,6 @@
 .taskDescription {
   overflow: auto;
   max-height: 20vh;
-}
-
-.taskBoxOverlay {
-  position: absolute;
-  background: rgba(64, 128, 255, 0.3);
-  top: -5px;
-  bottom: -5px;
-  left: -5px;
-  right: -5px;
-  border-radius: 10px;
 }
 
 .taskShowDesc {
