@@ -21,7 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * """
  */
-@import '../../../scss/colors';
+@import '~scss/colors';
 
 .taskgrid-pane {
   overflow: auto !important;
@@ -132,7 +132,7 @@
   left: -5px;
   right: -5px;
   border-radius: 10px;
-  z-index: 100000;
+  z-index: 5;
 }
 
 .taskShowDesc {
