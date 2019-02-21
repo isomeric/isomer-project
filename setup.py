@@ -3,7 +3,7 @@
 
 # Isomer - The distributed application framework
 # ==============================================
-# Copyright (C) 2011-2018 Heiko 'riot' Weinen <riot@c-base.org> and others.
+# Copyright (C) 2011-2019 Heiko 'riot' Weinen <riot@c-base.org> and others.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
@@ -25,13 +25,14 @@ from setuptools import setup, find_packages
 
 setup(
     name="isomer-project",
-    version="0.0.1",
+    version="0.0.2",
     description="isomer-project",
     author="Isomer Community",
     author_email="riot@c-base.org",
     url="https://github.com/isomeric/isomer-project",
     license="GNU Affero General Public License v3",
     packages=find_packages(),
+    include_package_data=True,
     long_description="""Isomer - Project
 ================
 
@@ -40,7 +41,11 @@ Project management suite.
 This software package is a plugin module for Isomer.
 """,
     dependency_links=[],
-    install_requires=['isomer>=1.0.0'],
+    install_requires=[
+        'isomer>=1.0',
+        'isomer-mail>=0.0.1',
+        'isomer-notifications>=0.0.1'
+    ],
     entry_points="""[isomer.schemata]
       project=isomer.project.project:Project
       task=isomer.project.task:Task
