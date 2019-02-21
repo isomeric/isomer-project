@@ -9,13 +9,15 @@
  */
 
 class TODOcomponent {
-    constructor($scope, $rootScope, $timeout, user, ObjectProxy, state) {
+    constructor($scope, $rootScope, $timeout, user, ObjectProxy, state, notification) {
         this.scope = $scope;
         this.rootscope = $rootScope;
         this.timeout = $timeout;
         this.user = user;
         this.state = state;
         this.op = ObjectProxy;
+        this.notification = notification;
+
 
         this.tasklist = [];
 
@@ -40,6 +42,7 @@ class TODOcomponent {
 
         this.get_filtered_tasks = function () {
             console.log('[TODO] Getting list of tasks');
+
             let groups = this.open_groups.concat(this.closed_group);
             console.log('[TODO] Groups:', groups, this.open_groups, this.closed_group);
 
@@ -83,7 +86,13 @@ class TODOcomponent {
             this.closed_group = this.user.get_module_default('closed_group');
             this.open_groups = this.user.get_module_default('open_groups');
             console.log('[TODO] Settings:', this.closed_group, this.open_groups);
-            self.get_filtered_tasks();
+            if (typeof this.open_groups === 'undefined' || typeof this.closed_group === 'undefined') {
+                self.notification.add('warning', 'Please configure groups',
+                    'You need to <a href=\"/#!/editor/profile/' + self.user.profile.uuid +
+                    '/edit\">configure open and closed groups in your profile</a> to enable the Todo list.', 10)
+            } else {
+                self.get_filtered_tasks();
+            }
         };
 
         this.rootscope.$on('User.Login', function () {
@@ -127,6 +136,6 @@ class TODOcomponent {
     }
 }
 
-TODOcomponent.$inject = ['$scope', '$rootScope', '$timeout', 'user', 'objectproxy', '$state'];
+TODOcomponent.$inject = ['$scope', '$rootScope', '$timeout', 'user', 'objectproxy', '$state', 'notification'];
 
 export default TODOcomponent;
