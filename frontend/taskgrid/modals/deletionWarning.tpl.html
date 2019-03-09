@@ -37,9 +37,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-lg btn-default" ng-click="$ctrl.close(); $hide()">
-                             <span class="fa fa-times"></span>Cancel
+                            <span class="fa fa-times"></span>Cancel
                         </button>
-                        <button type="submit" class="btn btn-lg btn-danger" ng-click="$ctrl.confirm_deletion(); $hide()">
+                        <button type="submit" class="btn btn-lg btn-danger"
+                                ng-click="$ctrl.confirm_deletion(); $hide()">
                             <span class="fa fa-trash-o"></span>
                             Delete {{$ctrl.selected.length}}
                             task{{$ctrl.selected.length > 1 ? 's' : ''}}

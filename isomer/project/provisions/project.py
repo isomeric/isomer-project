@@ -37,5 +37,4 @@ Just creates a fulltext searchable index over the name field.
 Projects = [
 ]
 
-
 provision = {'data': Projects, 'model': 'project'}

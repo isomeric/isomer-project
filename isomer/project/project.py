@@ -45,14 +45,22 @@ from isomer.schemata.base import base_object
 ProjectSchema = base_object('project', all_roles='crew')
 
 ProjectSchema['properties'].update({
-    'creatoruuid': {'type': 'string', 'title': 'Creator',
-                    'description': 'Creator of Project'},
-    'priority': {'type': 'number', 'title': 'Priority',
-                 'description': '1 is Highest priority', 'minimum': 1},
-    'tags': {'type': 'string', 'title': 'Tags',
-             'description': 'Attached tags'},
-    'notes': {'type': 'string', 'title': 'User notes',
-              'description': 'Entry notes'}
+    'creatoruuid': {
+        'type': 'string', 'title': 'Creator',
+        'description': 'Creator of Project'
+    },
+    'priority': {
+        'type': 'number', 'title': 'Priority',
+        'description': '1 is Highest priority', 'minimum': 1
+    },
+    'tags': {
+        'type': 'string', 'title': 'Tags',
+        'description': 'Attached tags'
+    },
+    'notes': {
+        'type': 'string', 'title': 'User notes',
+        'description': 'Entry notes'
+    }
 })
 
 ProjectForm = [
@@ -71,8 +79,10 @@ ProjectForm = [
                         'options': {
                             "type": "user",
                             "asyncCallback": "$ctrl.getFormData",
-                            "map": {'valueProperty': "uuid",
-                                    'nameProperty': 'name'}
+                            "map": {
+                                'valueProperty': "uuid",
+                                'nameProperty': 'name'
+                            }
                         },
                         "onChange": 'fieldChange(modelValue, form)'
                         #                             '''function (

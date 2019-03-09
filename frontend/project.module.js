@@ -4,7 +4,7 @@ import './todo/todo.scss';
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import { routing } from './project.config.js';
+import {routing} from './project.config.js';
 
 import taskgridcomponent from './taskgrid/taskgrid.js';
 import taskgridtemplate from './taskgrid/taskgrid.tpl.html';

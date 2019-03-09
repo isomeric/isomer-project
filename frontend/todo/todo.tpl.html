@@ -56,7 +56,7 @@
                                            theme="bootstrap">
                                     <ui-select-match placeholder="Select projects...">{{$item.name}}</ui-select-match>
                                     <ui-select-choices
-                                        repeat="project.uuid as project in $ctrl.projects | propsFilter: {name: $select.search}">
+                                            repeat="project.uuid as project in $ctrl.projects | propsFilter: {name: $select.search}">
                                         <div ng-bind-html="project.name | highlight: $select.search"></div>
                                     </ui-select-choices>
                                 </ui-select>
@@ -109,9 +109,9 @@
 
                 <div class="priority_dial">
                     <a class="increase_priority" ng-click="$ctrl.increase_priority(task)"><i
-                        class="fa fa-arrow-up"></i></a>
+                            class="fa fa-arrow-up"></i></a>
                     <a class="decrease_priority" ng-click="$ctrl.decrease_priority(task)"><i
-                        class="fa fa-arrow-down"></i></a>
+                            class="fa fa-arrow-down"></i></a>
                 </div>
 
             </div>

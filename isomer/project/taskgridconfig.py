@@ -40,14 +40,20 @@ from isomer.schemata.base import base_object, uuid_object
 TaskGridConfigSchema = base_object('taskgridconfig', all_roles='crew')
 
 TaskGridConfigSchema['properties'].update({
-    'locked': {'type': 'boolean', 'title': 'Locked Taskgrid',
-               'description': 'Determines whether the Taskgrid should '
-                              'be locked against changes.'},
-    'shared': {'type': 'boolean', 'title': 'Shared Taskgrid',
-               'description': 'Share Taskgrid with the crew'},
-    'description': {'type': 'string', 'format': 'html',
-                    'title': 'Taskgrid description',
-                    'description': 'Taskgrid description'},
+    'locked': {
+        'type': 'boolean', 'title': 'Locked Taskgrid',
+        'description': 'Determines whether the Taskgrid should '
+                       'be locked against changes.'
+    },
+    'shared': {
+        'type': 'boolean', 'title': 'Shared Taskgrid',
+        'description': 'Share Taskgrid with the crew'
+    },
+    'description': {
+        'type': 'string', 'format': 'html',
+        'title': 'Taskgrid description',
+        'description': 'Taskgrid description'
+    },
     'cards': {
         'type': 'array',
         'default': [],
@@ -112,8 +118,10 @@ TaskGridConfigForm = [
                 'options': {
                     "type": "taskgroup",
                     "asyncCallback": "$ctrl.getFormData",
-                    "map": {'valueProperty': "uuid",
-                            'nameProperty': 'name'}
+                    "map": {
+                        'valueProperty': "uuid",
+                        'nameProperty': 'name'
+                    }
                 }
             }
         ]

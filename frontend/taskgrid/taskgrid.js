@@ -143,15 +143,16 @@ class taskgridcomponent {
             /*
             self.op.get('taskgridconfig', uuid).then(function(msg) {
                 if (msg.action !== 'fail') { */
-                    self.state.go('app.taskgrid', {taskgrid: uuid}, {
-                        location: 'replace',
-                        inherit: false,
-                        notify: false
-                    });/*
-                } else {
-                    console.log('[TASKGRID] Could not get taskgrid:', msg);
-                }
-            });*/
+            self.state.go('app.taskgrid', {taskgrid: uuid}, {
+                location: 'replace',
+                inherit: false,
+                notify: false
+            });
+            /*
+                            } else {
+                                console.log('[TASKGRID] Could not get taskgrid:', msg);
+                            }
+                        });*/
         };
 
         this.storeTaskGridConfig = function () {
@@ -306,13 +307,13 @@ class taskgridcomponent {
             }
         });
 
-        this.op.search('taskgridconfig', '', '*').then(function(msg) {
+        this.op.search('taskgridconfig', '', '*').then(function (msg) {
             console.log('[TASKGRID] Grids received: ', msg);
             self.taskgrids = msg.data.list;
         });
 
         console.log('[TASKGRID] Config: ', this.taskgridconfiguuid);
-        this.op.get('taskgridconfig', this.taskgridconfiguuid).then(function(msg) {
+        this.op.get('taskgridconfig', this.taskgridconfiguuid).then(function (msg) {
             self.taskgridconfig = msg.data.object;
             console.log('[TASKGRID] Grid: ', self.taskgridconfig);
 
@@ -323,7 +324,7 @@ class taskgridcomponent {
                 taskgroups.push(card.taskgroup);
             }
 
-            self.op.search('taskgroup', {uuid: {'$in': taskgroups}}, '*').then(function(msg) {
+            self.op.search('taskgroup', {uuid: {'$in': taskgroups}}, '*').then(function (msg) {
                 for (let group of msg.data.list) {
                     self.taskgroups[group.uuid] = group;
                 }
@@ -347,7 +348,7 @@ class taskgridcomponent {
 
             });
 
-            self.op.search('user', '', '*').then(function(msg) {
+            self.op.search('user', '', '*').then(function (msg) {
                 console.log('[TASKGRID] Users:', msg);
                 for (let user of msg.data.list) {
                     self.assignees[user.uuid] = user;
@@ -496,7 +497,7 @@ class taskgridcomponent {
             this.op.changeObject('task', uuid, {field: 'assignee', value: ''});
         }
     }
-    
+
     set_priority() {
         for (let uuid of this.selected) {
             let task = this.tasklist[uuid];

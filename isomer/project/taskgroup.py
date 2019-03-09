@@ -46,19 +46,31 @@ from isomer.schemata.base import uuid_object, base_object
 TaskGroupSchema = base_object('taskgroup', all_roles='crew')
 
 TaskGroupSchema['properties'].update({
-    'project': {'type': 'string', 'title': 'Project',
-                'description': 'Project, the Task Group belongs to'},
-    'creator': {'type': 'string', 'title': 'Creator',
-                'description': 'Creator of Task Group'},
-    'tags': {'type': 'string', 'title': 'Tags',
-             'description': 'Attached tags'},
-    'color': {'type': 'string', 'title': 'Task Group Color',
-              'format': 'color',
-              'description': 'Color used for this Task Group'},
-    'priority': {'type': 'number', 'title': 'Priority',
-                 'description': '1 is Highest priority', 'minimum': 1},
-    'notes': {'type': 'string', 'format': 'html', 'title': 'User notes',
-              'description': 'Entry notes'},
+    'project': {
+        'type': 'string', 'title': 'Project',
+        'description': 'Project, the Task Group belongs to'
+    },
+    'creator': {
+        'type': 'string', 'title': 'Creator',
+        'description': 'Creator of Task Group'
+    },
+    'tags': {
+        'type': 'string', 'title': 'Tags',
+        'description': 'Attached tags'
+    },
+    'color': {
+        'type': 'string', 'title': 'Task Group Color',
+        'format': 'color',
+        'description': 'Color used for this Task Group'
+    },
+    'priority': {
+        'type': 'number', 'title': 'Priority',
+        'description': '1 is Highest priority', 'minimum': 1
+    },
+    'notes': {
+        'type': 'string', 'format': 'html', 'title': 'User notes',
+        'description': 'Entry notes'
+    },
 })
 
 TaskGroupForm = [
@@ -77,8 +89,10 @@ TaskGroupForm = [
                         'options': {
                             "type": "project",
                             "asyncCallback": "$ctrl.getFormData",
-                            "map": {'valueProperty': "uuid",
-                                    'nameProperty': 'name'}
+                            "map": {
+                                'valueProperty': "uuid",
+                                'nameProperty': 'name'
+                            }
                         }
                     }
                 ]
@@ -111,8 +125,10 @@ TaskGroupForm = [
                         'options': {
                             "type": "task",
                             "asyncCallback": "$ctrl.getFormData",
-                            "map": {'valueProperty': "uuid",
-                                    'nameProperty': 'name'}
+                            "map": {
+                                'valueProperty': "uuid",
+                                'nameProperty': 'name'
+                            }
                         }
                     }
                 ]
@@ -125,7 +141,7 @@ TaskGroupForm = [
 TaskgroupExtends = DefaultExtension(
     {
         'closed_group': uuid_object('Default "Closed" group', default=['f7525ffb-0f30-4654-bb72-602fb17247af']),
-    # Taskgroup "Closed"
+        # Taskgroup "Closed"
         'open_groups': {
             'type': 'array',
             'title': 'Open Groups',

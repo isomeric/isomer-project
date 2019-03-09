@@ -51,16 +51,24 @@ TaskSchema['properties'].update({
     'assignee': uuid_object('Assignee', 'Select an assignee'),
     'taskgroup': uuid_object(title='Task group', description='Group, this task belongs to'),
     'tags': TagData,
-    'alert_time': {'type': 'string', 'title': 'Alert',
-                   'format': 'datetimepicker',
-                   'description': 'Alert time'},
-    'due_time': {'type': 'string', 'title': 'Due',
-                 'format': 'datetimepicker',
-                 'description': 'Due time'},
-    'priority': {'type': 'number', 'title': 'Priority',
-                 'description': '1 is Highest priority', 'minimum': 1},
-    'notes': {'type': 'string', 'format': 'html', 'title': 'User notes',
-              'description': 'Entry notes', 'default': ''},
+    'alert_time': {
+        'type': 'string', 'title': 'Alert',
+        'format': 'datetimepicker',
+        'description': 'Alert time'
+    },
+    'due_time': {
+        'type': 'string', 'title': 'Due',
+        'format': 'datetimepicker',
+        'description': 'Due time'
+    },
+    'priority': {
+        'type': 'number', 'title': 'Priority',
+        'description': '1 is Highest priority', 'minimum': 1
+    },
+    'notes': {
+        'type': 'string', 'format': 'html', 'title': 'User notes',
+        'description': 'Entry notes', 'default': ''
+    },
     'comments': {
         'type': 'array',
         'default': [],
@@ -94,34 +102,50 @@ TaskSchema['properties'].update({
         'items': {
             'type': 'object',
             'properties': {
-                'time': {'type': 'string', 'format': 'datetimepicker',
-                         'title': 'Time of change',
-                         'description': 'Time when this change was '
-                                        'accepted'},
+                'time': {
+                    'type': 'string', 'format': 'datetimepicker',
+                    'title': 'Time of change',
+                    'description': 'Time when this change was '
+                                   'accepted'
+                },
                 'change': {
                     'type': 'object',
                     'name': '#taskchange',
                     'properties': {
-                        'status': {'type': 'string',
-                                   'title': 'New status',
-                                   'description': 'Status changed to '
-                                                  'this status'},
-                        'comment': {'type': 'string', 'title': 'Comment',
-                                    'description': 'Comment text'},
-                        'priority': {'type': 'number',
-                                     'title': 'Priority',
-                                     'description': '1 is Highest '
-                                                    'priority'},
-                        'tags': {'type': 'string', 'title': 'Tags',
-                                 'description': 'Attached tags'},
-                        'notes': {'type': 'string', 'format': 'html',
-                                  'title': 'User notes',
-                                  'description': 'Entry notes'},
-                        'owner': {'type': 'string', 'minLength': 36,
-                                  'title': "Owner's Unique ID",
-                                  'description': 'HIDDEN'},
-                        'name': {'type': 'string', 'title': 'Name',
-                                 'description': 'Name of Task'}
+                        'status': {
+                            'type': 'string',
+                            'title': 'New status',
+                            'description': 'Status changed to '
+                                           'this status'
+                        },
+                        'comment': {
+                            'type': 'string', 'title': 'Comment',
+                            'description': 'Comment text'
+                        },
+                        'priority': {
+                            'type': 'number',
+                            'title': 'Priority',
+                            'description': '1 is Highest '
+                                           'priority'
+                        },
+                        'tags': {
+                            'type': 'string', 'title': 'Tags',
+                            'description': 'Attached tags'
+                        },
+                        'notes': {
+                            'type': 'string', 'format': 'html',
+                            'title': 'User notes',
+                            'description': 'Entry notes'
+                        },
+                        'owner': {
+                            'type': 'string', 'minLength': 36,
+                            'title': "Owner's Unique ID",
+                            'description': 'HIDDEN'
+                        },
+                        'name': {
+                            'type': 'string', 'title': 'Name',
+                            'description': 'Name of Task'
+                        }
                     }
 
                 },
@@ -231,8 +255,10 @@ TaskForm = [
                         'options': {
                             "type": "task",
                             "asyncCallback": "$ctrl.getFormData",
-                            "map": {'valueProperty': "uuid",
-                                    'nameProperty': 'name'}
+                            "map": {
+                                'valueProperty': "uuid",
+                                'nameProperty': 'name'
+                            }
                         }
                     }
                 ]
